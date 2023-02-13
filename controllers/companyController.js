@@ -7,17 +7,22 @@ exports.create = (req, res) => {
         res.status(400).send({
             message: "Content cannot be empty!"
         })
-        return;
+        return
     }
 
     //Create a Company
     const company = {
         title: req.body.title,
+        contactName: req.body.contactName,
+        description: req.body.description,
+        adress: req.body.adress,
+        phone: req.body.phone
     }
 
     // Save Company in the database
     Company.create(company)
     .then(data => {
+        console.log(data)
         res.send(data)
     })
     .catch(err => {
@@ -43,3 +48,5 @@ exports.findAll = (req, res) => {
         })
     })
 }
+
+exports.u
