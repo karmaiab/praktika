@@ -1,0 +1,26 @@
+[
+    {
+      "title": "Eesti Energria",
+      "description": "Electricity, gas and environmentally friendly energy solutions for your home or business - all from one place. Let's move towards a green future together!",
+      "name": ["...", "..."],
+      "skillset": ["...", "..."]
+    },
+    {
+      "title": "Narva Raamatukogu",
+      "description": "Narva Central Library offers a space for remote work, which is furnished according to modern requirements.",
+      "name": ["...", "..."],
+      "skillset": ["...", "..."]
+    },
+    {
+      "title": "Narva Haigla",
+      "description": "Narva Central Hospital, cures all types of diseases and is very effiecent",
+      "name": ["...", "..."],
+      "skillset": ["...", "..."]
+    },
+    {
+      "title": "Smit",
+      "description": "The Information Technology and Development Center of the Ministry of the Interior (SMIT) is the country's largest IT institution, which creates and manages the information systems necessary to save lives and ensure internal security",
+      "name": ["...", "..."],
+      "skillset": ["...", "..."]
+    }
+  ]
