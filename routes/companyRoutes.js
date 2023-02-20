@@ -33,14 +33,13 @@ module.exports = app => {
     const companies = require("../controllers/companyController")
     const router = require("express").Router()
 
-    // Create a new Company
-    router.post("/", companies.create)
-
+    
 /**
  * @swagger
- * /api/companies:
+ * /api/companies/findAll:
  *   get:
  *      summary: Retrieve a list of companies.
+ *      tags: [Companies]
  *      description: Retrieve a list of companies.
  *      responses:
  *        200:
@@ -66,7 +65,89 @@ module.exports = app => {
  */
 
     // Retrieve all companies
-    router.get("/", companies.findAll)
+    router.get("/findAll", companies.findAll)
 
+/**
+ * @swagger
+ * /api/companies/create:
+ *  post:
+ *      summary: Create a company
+ *      tags: [Companies]
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *              $ref: '#/components/schemas/Company'
+ *      responses:
+ *       200:
+ *          description: The created company
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Company'
+ *       500:
+ *          description: Some server error
+ */
+
+    // Create a new Company
+    router.post("/create", companies.create)
+
+/**
+ * @swagger
+ * /api/companies/update
+ *   get:
+ *     summary: Get the company by id
+ *     tags: [Companies]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The company id
+ *     responses:
+ *       200:
+ *         description: The company response by id
+ *         contens:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Company'
+ *       404:
+ *         description: The company was not found
+ *   put:
+ *    summary: Update the company by the id
+ *    tags: [Companies]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: The company id
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/Company'
+ *    responses:
+ *      200:
+ *        description: The company was updated
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Company'
+ *      404:
+ *        description: The company was not found
+ *      500:
+ *        description: Some error happened
+ */
+
+    // Update Company
+    router.put("/update/:id", companies.update)
+   
+    // Delete Company
+    router.delete("/delete/:id", companies.delete)
+   
     app.use('/api/companies', router)
 }

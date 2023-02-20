@@ -49,4 +49,57 @@ exports.findAll = (req, res) => {
     })
 }
 
+//Update Company from the database
+exports.update = (req, res) => {
+    const id = req.params.id;
+  
+    Company.update(req.body, {
+      where: { id: id }
+    })
+      .then(data => {
+        if (data == 1) {
+          res.send({
+            message: "Company was updated successfully."
+          });
+        } else {
+          res.send({
+            message: `Cannot update Company with id=${id}. Maybe Company was not found or req.body is empty!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error updating Company with id=" + id
+        });
+      });
+  };
+
+// Delete a Company
+exports.delete = (req, res) => {
+
+    const id = req.params.id;
+    
+    console.log(id)
+    
+    Company.destroy({
+        where: { id: id }
+    })
+    .then(data => {
+        if (data == 1) {
+            res.send({
+                message: "Company was deleted successfully!"
+        });
+        } else {
+            res.send({
+                message: `Cannot delete Company with id=${id}. Maybe Company was not found!`
+        });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Could not delete Company with id=" + id
+        });
+    });
+};
+
 exports.u
